@@ -7,9 +7,13 @@ import dotenv from 'dotenv';
 import cloudinary from 'cloudinary';
 import fileUpload from 'express-fileupload';
 import { getAllImages } from './controller/images.controller.js';
+import path from 'path'
 
+
+const __dirname = path.resolve();
 // Initialize Express app
 const app = express();
+
 dotenv.config();  // Load environment variables
 
 // Middleware
@@ -63,6 +67,11 @@ app.post('/upload', (req, res) => {
         });
 });
 app.get('/images', getAllImages);
+
+app.use(express.static(path.join(__dirname, '/client/dist')))
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client','dist','index.html'))
+})
 
 // Port configuration
 const PORT = process.env.PORT || 5000;
