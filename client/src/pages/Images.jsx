@@ -10,7 +10,7 @@ const Images = () => {
     useEffect(() => {
         const fetchImages = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/images');
+                const response = await axios.get('https://cloudinary-upload-m412.onrender.com/images');
                 setImages(response.data.images);
                 setLoading(false);
             } catch (err) {

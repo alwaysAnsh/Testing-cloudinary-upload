@@ -28,7 +28,7 @@ const Upload = () => {
         formData.append('image', image);  // Append the selected image
 
         try {
-            const response = await axios.post('http://localhost:5000/upload', formData, {
+            const response = await axios.post('https://cloudinary-upload-m412.onrender.com/upload', formData, {
                 headers: { 'Content-Type': 'multipart/form-data' }
             });
             
